@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video</title>
+</head>
+
+<body>
+    <div>
+        <table class="video-table">
+            <tbody>
+                <tr class="video-table-title">
+                    <th class="video-table-title-id">Id</th>
+                    <th class="video-table-title-video">Video</th>
+                </tr>
+                {% if video %}
+                    {% for video in video.all%}
+                        <tr class="video-table-tr">
+                            <td class="video-table-tr-id">{{video.id}}</td>
+                            <td class="video-table-tr-video">
+                                <video controls autolplay width="500">
+                                    <source src="../{{video.video}}" />
+                                </video>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<style>
+    .video-table {
+        width: 1200px;
+        border: 1px dotted #045FB4;
+        text-align: center;
+        margin: auto;
+    }
+
+    .video-table-title {
+        height: 60px;
+        font-size: 1.2em;
+        border: 1px dotted #045FB4;
+        background-color: #045FB4;
+        color: #ffffff;
+    }
+
+    .video-table-title-id {
+        width: 300px;
+        border-bottom: 1px dotted #045FB4;
+        border-right: 1px dotted #045FB4;
+    }
+
+    .video-table-title-video {
+        border-bottom: 1px dotted #045FB4;
+    }
+
+    .video-table-tr-id {
+        font-size: 1.5em;
+        border-bottom: 1px dotted #045FB4;
+        border-right: 1px dotted #045FB4;
+    }
+
+    .video-table-tr-video {
+        height: 400px;
+        border-bottom: 1px dotted #045FB4;
+    }
+</style>
+</html>

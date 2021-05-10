@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wish</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+        <div>
+            <div>안녕하세요, {{user.username}}님</div>
+            <div><a href="{% url 'logout' %}">LOGOUT</a></div>
+        </div>
+    {% else %}
+        <div class="login-box">
+            <div class="login-title">
+            <p>Login</p>
+            </div>
+            <form method="POST" action= "{% url 'login' %}">
+            {% csrf_token %}
+            <div class="login-input">
+                <div class="login-input-id">
+                <label>ID : </label>
+                <input name="username"/>
+                </div>
+                <div class="login-input-password">
+                <label>PASSWORD : </label>
+                <input name="password"/>
+                </div>
+            </div>
+            <div class="login-btn">
+                <button onclick="location.href='/user'">Login</button>
+            </div>
+            </form>
+        </div>
+    {% endif %}
+</body>
+
+</html>

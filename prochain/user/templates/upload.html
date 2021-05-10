@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UploadImages</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+        <div class="upload-image">
+            <div class="nav">
+                <span>안녕하세요, {{user.username}}님</span>
+                <a href="{% url 'logout' %}" style="color:white">LOGOUT</a>
+            </div>
+            <div class="img-list">
+                <form method="POST" action='' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">파일 업로드</button>
+                    <div style="padding-top: 12px;"><a href="{% url 'menu' %}" style="color:white">메뉴판 확인 ></a></div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div>
+        <div>
+            <div>로그인 후 이용해 주세요. </div>
+            <span><a href="{% url 'login' %}">LOGIN</a></span>
+        </div>
+        </div>
+    {% endif %}
+</body>
+<style>
+    .nav {
+        padding: 30px 0;
+        border: 1px solid #ffffff;
+    }
+    .upload-image {
+        text-align : center;
+        font-size : 1.2em;
+        background-color: skyblue;
+        width: 50vw;
+        margin: auto;
+        padding: 60px 120px;
+    }
+
+    .img-list {
+        text-align: left;
+    }
+</style>
+</html>
